@@ -1,0 +1,19 @@
+﻿@using System.Reflection
+@using XCode
+@using XCode.Configuration
+@{
+    Layout = NewLife.Cube.Setting.Current.Layout;
+
+    var entity = Model as IEntity;
+    var isNew = entity.IsNullKey;
+
+    var rv = entity.GetRouteKey();
+}
+
+<div class="form-horizontal">
+    @Html.Partial("_Form_Header", entity)
+    @using (Html.BeginForm((isNew ? "Add" : "Edit"), null, rv))
+    {
+        @Html.Partial("_Form_Body", entity)
+    }
+</div>

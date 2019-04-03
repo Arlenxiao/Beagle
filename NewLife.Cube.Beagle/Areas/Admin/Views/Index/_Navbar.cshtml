@@ -1,0 +1,84 @@
+﻿@using NewLife.Common;
+@using XCode.Membership;
+@using NewLife.Model;
+@{
+    var user = ViewBag.User as IUser ?? User.Identity as IUser;
+    var uid = 0;
+    var roleNames = "";
+    if (user != null)
+    {
+        uid = user.ID;
+        roleNames = user.Roles == null ? "" : user.Roles.Join();
+    }
+    var cfg = ViewBag.Config as SysConfig;
+    var name = cfg == null ? "" : cfg.DisplayName;
+
+    var fact = ObjectContainer.Current.Resolve<IMenuFactory>();
+    var Menus = fact.Root.Childs;
+}
+<nav class="navbar navbar-expand fixed-top be-top-header">
+    <div class="container-fluid">
+        <div class="be-navbar-header">
+            <a class="be-toggle-left-sidebar" href="#"><span class="icon mdi mdi-menu"></span></a>
+        </div>
+        @if (!Menus[0].Name.EqualIgnoreCase("Admin"))
+        {
+            <div class="search-container" style="padding-left:0px;">
+                <div class="input-group input-group-sm">
+                    <input class="form-control search-input" type="text" name="global_txt_search" placeholder="查询...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button" id="global_btn_query">查 询</button>
+                    </span>
+                </div>
+            </div>
+        }
+        <div class="be-right-navbar">
+            <ul class="nav navbar-nav float-right be-user-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false"> <img src="~/Template/img/logo.png" /></a>
+                    <div class="dropdown-menu" role="menu">
+                        <div class="user-info">
+                            <div class="user-name">Admin</div>
+                        </div>
+                        <a class="dropdown-item" href="pages-profile.html">
+                            <span class="icon mdi mdi-face"></span>帐号
+                        </a><a class="dropdown-item" href="#"><span class="icon mdi mdi-settings"></span>设置</a>
+                        <a class="dropdown-item" href="~/Admin/User/Logout">
+                            <span class="icon mdi mdi-power"></span>退出
+                        </a>
+                    </div>
+                </li>
+            </ul>
+            <div class="page-title"></div>
+            <ul class="nav navbar-nav float-right be-icons-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link be-toggle-right-sidebar" href="#" role="button" aria-expanded="false">
+                        <span class="icon mdi mdi-settings"></span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false"><span class="icon mdi mdi-apps"></span></a>
+                    <ul class="dropdown-menu be-connections">
+                        <li>
+                            <div class="list">
+                                <div class="content">
+                                    <div class="row">
+                                        <div class="col">
+                                            <a class="connection-item" href="#">
+                                                <img src="~/Template/img/1.png" /><span>成本系统</span>
+                                            </a>
+                                        </div>
+                                        <div class="col">
+                                            <a class="connection-item" href="#"><img src="~/Template/img/1.png" /><span>管理后台</span></a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,13 @@
+﻿@using NewLife.Common;
+@{
+    var user = ViewBag.User as IUser ?? User.Identity as IUser;
+    var fact = ViewBag.Factory as IEntityOperate;
+    var set = ViewBag.PageSetting as PageSetting;
+}
+@if (set.EnableSelect)
+{
+    @*<button class="btn btn-space btn-outline-primary btn-space" data-action="action" data-url="@Url.Action("EnableSelect")">批量启用</button>
+    <button class="btn btn-space btn-outline-warning btn-space" data-action="action" data-url="@Url.Action("DisableSelect")">批量禁用</button>*@
+    <a class="btn btn-space btn-outline-primary btn-space" href="@Url.Action("EnableSelect")">批量启用</a>
+    <a class="btn btn-space btn-outline-warning btn-space" href="@Url.Action("DisableSelect")">批量禁用</a>
+}

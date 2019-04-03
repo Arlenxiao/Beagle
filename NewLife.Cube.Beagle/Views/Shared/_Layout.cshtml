@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@ViewData["Title"]</title>
+    <link href="~/Template/lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+    <link href="~/Template/lib/material-design-icons/css/material-design-iconic-font.css" rel="stylesheet" />
+    <link href="~/Template/lib/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+    <link href="~/Template/css/app.css" rel="stylesheet" />
+    @RenderSection("css", required: false)
+
+    <script src="~/Template/lib/jquery/jquery.js"></script>
+    <script src="~/Template/lib/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+    <script src="~/Template/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</head>
+<body class="be-splash-screen">
+    @RenderBody()
+   
+    <script src="~/Template/lib/sweetalert2/sweetalert2.all.min.js"></script>
+    <script src="~/Template/js/app.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //-initialize the javascript
+            App.init();
+        });
+
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

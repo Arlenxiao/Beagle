@@ -1,0 +1,31 @@
+﻿@using NewLife.Model;
+@using XCode.Membership;
+@{
+    var user = ViewBag.User as IUser ?? User.Identity as IUser;
+
+    var fact = ObjectContainer.Current.Resolve<IMenuFactory>();
+
+    var item = Model as IMenu;
+    var childs = fact.GetMySubMenus(item.ID, user).Where(m => m.Visible);
+    var url = item.Url.IsNullOrEmpty() ? "" : Url.Content(item.Url);
+}
+@if (childs.Any())
+{
+    <li class="parent">
+        <a href="#"><i class="icon @item.Icon"></i><span>@item.DisplayName</span></a>
+        <ul class="sub-menu">
+            @foreach (var menu in childs)
+            {
+                @Html.Partial("_Left_Item", menu);
+            }
+        </ul>
+    </li>
+}
+else
+{
+    <li>
+        <a href="@url" target="main">
+            <i class="icon pr-2 @item.Icon"></i> @item.DisplayName
+        </a>
+    </li>
+}

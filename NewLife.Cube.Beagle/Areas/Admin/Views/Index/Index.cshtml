@@ -1,0 +1,66 @@
+﻿@{
+    Layout = null;
+
+    var User = ViewBag.User;
+    var cfg = NewLife.Common.SysConfig.Current;
+
+    var title = ViewBag.Title + "";
+    if (title != "" && !title.EndsWith(" - ")) { title += " - "; }
+    title += cfg.DisplayName;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@ViewData["Title"]</title>
+    <link href="~/Template/lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+    <link href="~/Template/lib/material-design-icons/css/material-design-iconic-font.css" rel="stylesheet" />
+    <link href="~/Template/lib/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+    <link href="~/Template/css/app.css" rel="stylesheet" />
+</head>
+<body>
+    @* be-collapsible-sidebar-collapsed *@
+    <div class="be-wrapper be-collapsible-sidebar be-collapsible-sidebar-hide-logo be-fixed-sidebar ">
+        @Html.Partial("_Navbar")
+        @Html.Partial("_Left")
+        <div class="be-content be-no-padding">
+            <iframe style="width: 100%; height: 100%; margin: 0; padding: 0; border: none;" id="main" name="main" src="@ViewBag.Main"></iframe>
+        </div>
+    </div>
+
+    <script src="~/Template/lib/jquery/jquery.js"></script>
+    <script src="~/Template/lib/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+    <script src="~/Template/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="~/Template/js/app.js"></script>
+    <script src="~/Template/lib/prettify/prettify.js"></script>
+    <script src="~/Template/lib/sweetalert2/sweetalert2.all.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //-initialize the javascript
+            App.init();
+
+            //Runs prettify
+            prettyPrint();
+
+            var $frmContent = $('#main');
+            function fixFrmContentSize() {
+                var offset = $frmContent.offset();
+                var top = offset.top;
+                var height = document.documentElement.clientHeight;
+                $frmContent.height(height - top - 5);
+            }
+            fixFrmContentSize();
+            $(window).resize(fixFrmContentSize);
+
+            //增加iframe被嵌套的检测2015-6-4 景裔增加
+            if (window != top) {
+                top.location.href = location.href;
+            }
+        });
+    </script>
+</body>
+</html>

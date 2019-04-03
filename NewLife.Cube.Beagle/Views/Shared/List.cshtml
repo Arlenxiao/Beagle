@@ -1,0 +1,19 @@
+﻿@using NewLife.Web;
+@using XCode;
+@{
+    Layout = NewLife.Cube.Setting.Current.Layout;
+
+    var fact = ViewBag.Factory as IEntityOperate;
+    var page = ViewBag.Page as Pager;
+}
+<div class="main-content container-fluid" style="padding:0px;">
+    @Html.Partial("_List_Toolbar")
+    <div class="row icon-category" id="web-application">
+        <div class="col-12">
+            <div class="card">
+                @Html.Partial("_List_Data")
+            </div>
+        </div>
+    </div>
+    @Html.Partial("_List_Pager")
+</div>

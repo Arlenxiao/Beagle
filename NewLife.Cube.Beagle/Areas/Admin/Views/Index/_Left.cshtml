@@ -1,0 +1,49 @@
+﻿@using NewLife.Model;
+@{
+    var user = ViewBag.User as IUser ?? User.Identity as IUser;
+
+    var fact = ObjectContainer.Current.Resolve<IMenuFactory>();
+
+    var Menus = fact.Root.Childs;
+    if (user != null && user.Role != null)
+    {
+        Menus = fact.GetMySubMenus(fact.Root.ID, user);
+    }
+
+    // 如果顶级只有一层，并且至少有三级目录，则提升一级
+    if (Menus.Count == 1 && Menus[0].Childs.All(m => m.Childs.Count > 0)) { Menus = Menus[0].Childs; }
+}
+<div class="be-left-sidebar">
+    <div class="left-sidebar-wrapper">
+        <a class="left-sidebar-toggle" href="#">菜单</a>
+        <div class="left-sidebar-spacer">
+            <div class="left-sidebar-scroll">
+                <div class="left-sidebar-content">
+                    <ul class="sidebar-elements">
+
+                        @foreach (IMenu menu in Menus.Where(m => m.Visible))
+                        {
+                            var childs = fact.GetMySubMenus(menu.ID, user).Where(m => m.Visible);
+
+                            <li @Html.Raw(menu == Menus[0] ? "class=\"parent active open\"" : "")>
+                                <a href="#"><i class="icon @menu.Icon"></i><span>@menu.DisplayName</span></a>
+                                @if (childs.Any())
+                                {
+                                    <ul class="sub-menu">
+                                        @foreach (IMenu menu2 in childs)
+                                        {
+                                            @Html.Partial("_Left_Item", menu2);
+                                        }
+                                    </ul>
+                                }
+                            </li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="progress-widget">
+        </div>
+    </div>
+</div>

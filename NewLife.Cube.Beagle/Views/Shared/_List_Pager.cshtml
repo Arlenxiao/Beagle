@@ -1,0 +1,84 @@
+﻿@using NewLife.Web;
+@{
+    var page = ViewBag.Page as Pager;
+    page.PageUrlTemplate = Url.Action("Index") + "{链接}";
+    //page.PageUrlTemplate = page.PageUrlTemplate.Replace("{链接}", Url.Action("Index") + "{链接}");
+    // 没有总记录数的时候不显示分页，可以认为不启用分页
+
+    var act = ViewBag.Action as String;
+    if (act.IsNullOrEmpty()) { act = Url.Action("Index"); }
+}
+@if (page.TotalCount > 0)
+{
+    <div class="dataTables_wrapper row be-datatable-footer fixed-bottom" style="padding:5px 15px 0px 15px;">
+        <form action="@act?@page.GetBaseUrl(true, true, false)" method="post" role="form">
+            <div class="row">
+                <div class="col-md-5 mt-2">
+                    共 <span>@page.TotalCount.ToString("n0")</span> 条&nbsp;&nbsp;
+                    每页 <span>@page.PageSize</span> 条&nbsp;&nbsp;
+                    当前第 <span>@page.PageIndex.ToString("n0")</span> 页/共 <span>@page.PageCount.ToString("n0")</span> 页
+                </div>
+                <div class="col-md-7">
+                    <div class="btn-group btn-space mr-2  pull-right" style="float:right;">
+                        @{
+                            int len = 8;
+                            int left = (len - 1) / 2, right = len - left - 1;
+                            int start = page.PageIndex - left;//开始页数
+                            Int64 end = page.PageIndex + right;//结束页数
+                            start = start < 1 ? 1 : start;
+                            end = end > page.PageCount ? page.PageCount : end;
+                            if (page.PageIndex <= 1)
+                            {
+                                <a class="btn btn-secondary" href="#" style="min-width:32px;"><i class="mdi mdi-skip-previous" style="font-weight: bold;font-size: 20px;margin-top:5px;"></i></a>
+                                <a class="btn btn-secondary" href="#" style="min-width:32px;"><i class="mdi mdi-caret-left" style="font-weight: bold;font-size: 20px;margin-top:5px;"></i></a>
+                            }
+                            else
+                            {
+                                <a class="btn btn-secondary" href="@page.GetPageUrl("首页", 1)" style="min-width:32px;"><i class="mdi mdi-skip-previous" style="font-weight: bold;font-size: 20px;margin-top:5px;"></i></a>
+                                <a class="btn btn-secondary" href="@page.GetPageUrl("上一页", page.PageIndex-1)" style="min-width:32px;"><span class="mdi mdi-caret-left" style="font-weight: bold;font-size: 20px;margin-top:5px;"></span></a>
+                            }
+
+                            for (int i = start; i <= end; i++)
+                            {
+                                if (i == page.PageIndex)
+                                {
+                                    <a class="btn btn-secondary btn-primary" href="javascript:;">@i</a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-secondary" href="@page.GetPageUrl(i.ToString(), i)">@i</a>
+                                }
+                            }
+
+                            if (page.PageIndex >= page.PageCount)
+                            {
+                                <a class="btn btn-secondary" href="#" style="min-width:32px;"><i class="mdi mdi-caret-right" style="font-weight: bold;font-size: 20px;margin-top:5px;"></i></a>
+                                <a class="btn btn-secondary" href="#" style="min-width:32px;"><i class="mdi mdi-skip-next" style="font-weight: bold;font-size: 20px;margin-top:5px;"></i></a>
+                            }
+                            else
+                            {
+                                <a class="btn btn-secondary" style="min-width:32px;" href="@page.GetPageUrl("下一页", page.PageIndex + 1)"><i class="mdi mdi-caret-right" style="font-weight: bold;font-size: 20px;margin-top:5px;"></i></a>
+                                <a class="btn btn-secondary" style="min-width:32px;" href="@page.GetPageUrl("未页", page.PageCount)"><i class="mdi mdi-skip-next" style="font-weight: bold;font-size: 20px;margin-top:5px;"></i></a>
+                            }
+                        }
+                        <select id="PageSize" name="PageSize" onchange="$(this).parents('form').submit();" class="form-control pagesize" style="height:34px;padding:1px;">
+                            <option value="10" @(page.PageSize == 10 ? "selected" : "")>10</option>
+                            <option value="20" @(page.PageSize == 20 ? "selected" : "")>20</option>
+                            <option value="50" @(page.PageSize == 50 ? "selected" : "")>50</option>
+                            <option value="100" @(page.PageSize == 100 ? "selected" : "")>100</option>
+                            <option value="200" @(page.PageSize == 200 ? "selected" : "")>200</option>
+                            <option value="500" @(page.PageSize == 500 ? "selected" : "")>500</option>
+                            <option value="1000" @(page.PageSize == 1000 ? "selected" : "")>1000</option>
+                            <option value="10000" @(page.PageSize == 10000 ? "selected" : "")>10000</option>
+                        </select>
+                        <script type="text/javascript">
+                            $(function () {
+                                $('#PageSize').val(@page.PageSize);
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+}

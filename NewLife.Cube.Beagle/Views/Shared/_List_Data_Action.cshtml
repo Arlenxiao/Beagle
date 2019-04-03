@@ -1,0 +1,29 @@
+﻿@{
+    var entity = Model as IEntity;
+
+    var rv = entity.GetRouteKey();
+}
+@if (this.Has(PermissionFlags.Update))
+{
+
+    <a href="@Url.Action("Edit", rv)" class="editcell icon pr-2 h4" title="编辑">
+        <i class="mdi mdi-settings text-dark"></i>
+    </a>
+}
+else if (this.Has(PermissionFlags.Detail))
+{
+    <a href="@Url.Action("Detail", rv)" class="editcell icon pr-2  h4" title="查看"> <i class="mdi mdi-format-list-bulleted text-info"></i></a>
+}
+@if (this.Has(PermissionFlags.Delete))
+{
+    var fact = ViewBag.Factory as IEntityOperate;
+    var fi = (fact == null || fact.Fields == null) ? null : fact.Fields.FirstOrDefault(e => e.Name.EqualIgnoreCase("Deleted", "IsDelete", "IsDeleted"));
+    if (fi != null && fi.Type == typeof(Boolean) && (Boolean)entity[fi.Name])
+    {
+        <a href="@Url.Action("Delete", rv)" data-action="action" data-confirm="确认恢复？" title="恢复" class="icon pr-2 h4"><i class="mdi mdi-delete text-danger"></i></a>
+    }
+    else
+    {
+        <a href="@Url.Action("Delete", rv)" data-action="action" data-confirm="确认删除？" title="删除" class="icon pr-2 h4"><i class="mdi mdi-delete text-danger"></i></a>
+    }
+}

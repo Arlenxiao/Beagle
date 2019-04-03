@@ -1,0 +1,14 @@
+﻿
+@using XCode.Membership;
+@{
+    var entity = Model as IEntity;
+    var isNew = entity.IsNullKey;
+}
+@if (this.Has(PermissionFlags.Insert, PermissionFlags.Update))
+{
+    <div class=" be-datatable-footer fixed-bottom form-actions col-sm-12 col-md-12" style="padding:10px 0px 0px 0px;">
+        <label class="control-label col-xs-4 col-sm-5 col-md-5"></label>
+        <button type="submit" class="btn btn-space btn-primary"><i class="pr-2 mdi mdi-@(isNew ? "plus-circle-o" : "floppy")"></i>@(isNew ? "新 增" : "保 存")</button>
+        <button type="button" class="btn btn-space btn-danger" onclick="history.go(-1);"><i class="pr-2 mdi mdi-undo"></i>取 消</button>
+    </div>
+}
