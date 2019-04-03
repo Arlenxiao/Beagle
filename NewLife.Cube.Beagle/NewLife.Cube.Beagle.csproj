@@ -146,31 +146,142 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Login.cshtml</DependentUpon>
     </Compile>
+    <Compile Include="Areas\Admin\Views\User\_List_Data.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_List_Data.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Views\User\_List_Toolbar_Batch.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_List_Toolbar_Batch.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Views\_ViewStart.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_ViewStart.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\HtmlExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Shared\Error.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Error.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Form.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Form.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\List.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>List.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_Ace_Layout.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Ace_Layout.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_DateRange.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_DateRange.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_Form_Action.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Form_Action.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_Form_Body.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Form_Body.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_Form_Group.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Form_Group.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_Form_Header.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Form_Header.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_Form_Item.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Form_Item.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_Layout.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Layout.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_List_Data.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_List_Data.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_List_Data_Action.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_List_Data_Action.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_List_Pager.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_List_Pager.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_List_Search.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_List_Search.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_List_Toolbar.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_List_Toolbar.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_List_Toolbar_Adv.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_List_Toolbar_Adv.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_List_Toolbar_Search.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_List_Toolbar_Search.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\_ViewStart.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_ViewStart.cshtml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Areas\Admin\Views\Index\Index.cshtml">
+    <None Include="Areas\Admin\Views\Index\Index.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Index.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Areas\Admin\Views\Index\_Navbar.cshtml">
+    </None>
+    <None Include="Areas\Admin\Views\Index\_Navbar.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>_Navbar.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Areas\Admin\Views\Index\_Left.cshtml">
+    </None>
+    <None Include="Areas\Admin\Views\Index\_Left.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>_Left.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Areas\Admin\Views\Index\_Left_Item.cshtml">
+    </None>
+    <None Include="Areas\Admin\Views\Index\_Left_Item.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>_Left_Item.generated.cs</LastGenOutput>
-    </Content>
+    </None>
     <Content Include="Template\css\app.css" />
     <Content Include="Template\css\app.min.css" />
     <Content Include="Template\img\1.png" />
@@ -1711,13 +1822,25 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Views\_ViewStart.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_ViewStart.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Shared\Error.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Error.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Shared\_Layout.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Layout.generated.cs</LastGenOutput>
+    </None>
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\_Ace_Layout.cshtml" />
+    <None Include="Views\Shared\_Ace_Layout.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Ace_Layout.generated.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1725,14 +1848,23 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Admin\Views\User\Login.cshtml">
+    <None Include="Areas\Admin\Views\User\Login.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Login.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    </None>
+    <None Include="Areas\Admin\Views\_ViewStart.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_ViewStart.generated.cs</LastGenOutput>
+    </None>
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\User\_List_Toolbar_Batch.cshtml" />
-    <Content Include="Areas\Admin\Views\User\_List_Data.cshtml" />
+    <None Include="Areas\Admin\Views\User\_List_Toolbar_Batch.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_List_Toolbar_Batch.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\Admin\Views\User\_List_Data.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_List_Data.generated.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
     <Content Include="Template\css\app.css.map" />
     <Content Include="Template\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
@@ -2065,18 +2197,66 @@
     <Content Include="Template\lib\summernote\summernote-bs4.js.map" />
     <Content Include="Template\lib\summernote\summernote-lite.js.map" />
     <Content Include="Template\lib\summernote\summernote.js.map" />
-    <Content Include="Views\Shared\List.cshtml" />
-    <Content Include="Views\Shared\_List_Toolbar.cshtml" />
-    <Content Include="Views\Shared\_List_Data.cshtml" />
-    <Content Include="Views\Shared\_List_Pager.cshtml" />
-    <Content Include="Views\Shared\_List_Search.cshtml" />
-    <Content Include="Views\Shared\_DateRange.cshtml" />
-    <Content Include="Views\Shared\_List_Toolbar_Search.cshtml" />
-    <Content Include="Views\Shared\_List_Toolbar_Adv.cshtml" />
-    <Content Include="Views\Shared\_List_Data_Action.cshtml" />
-    <Content Include="Views\Shared\_Form_Header.cshtml" />
-    <Content Include="Views\Shared\Form.cshtml" />
-    <Content Include="Views\Shared\_Form_Action.cshtml" />
+    <None Include="Views\Shared\List.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>List.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Shared\_List_Toolbar.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_List_Toolbar.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Shared\_List_Data.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_List_Data.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Shared\_List_Pager.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_List_Pager.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Shared\_List_Search.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_List_Search.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Shared\_DateRange.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_DateRange.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Shared\_List_Toolbar_Search.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_List_Toolbar_Search.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Shared\_List_Toolbar_Adv.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_List_Toolbar_Adv.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Shared\_List_Data_Action.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_List_Data_Action.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Shared\_Form_Header.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Form_Header.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Shared\Form.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Form.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Shared\_Form_Action.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Form_Action.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Shared\_Form_Group.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Form_Group.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Shared\_Form_Item.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Form_Item.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Shared\_Form_Body.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Form_Body.generated.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Template\lib\moment.js\moment.d.ts" />

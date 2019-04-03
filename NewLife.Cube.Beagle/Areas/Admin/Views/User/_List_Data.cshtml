@@ -18,7 +18,12 @@
         <tr>
             @if (set.EnableSelect)
             {
-                <th class="text-center" style="width:10px;"><input type="checkbox" id="chkAll" title="全选" /></th>
+                <th class="text-center" style="width:10px;">
+                    <div class="be-checkbox custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" id="chkAll">
+                        <label class="custom-control-label" for="chkAll"></label>
+                    </div>
+                </th>
             }
             <th class="text-center hidden-md hidden-sm hidden-xs"><a href="@Html.Raw(page.GetSortUrl("ID"))">编号</a></th>
             <th class="text-center" title="名称。登录用户名"><a href="@Html.Raw(page.GetSortUrl("Name"))">名称</a></th>
@@ -43,36 +48,41 @@
     <tbody>
         @foreach (var entity in Model)
         {
-        <tr>
-            @if (set.EnableSelect)
-            {
-                <td class="text-center"><input type="checkbox" name="keys" value="@entity.ID" /></td>
-            }
-            <td class="text-center hidden-md hidden-sm hidden-xs">@entity.ID</td>
-            <td>@entity.Name</td>
-            <td>@entity.DisplayName</td>
-            <td class="text-center">@entity.Sex</td>
-            <td>@entity.Mail</td>
-            <td>@entity.Mobile</td>
-            @*<td><a href="Department?ID=@entity.DepartmentID">@entity.DepartmentName</a></td>*@
-            <td><a href="Role?ID=@entity.RoleID">@entity.RoleName</a></td>
-            <td class="text-center">
-                <i class="mdi mdi-@(entity.Online ? "check" : "minus-circle")" style="color: @(entity.Online ? "green" : "red"); font-weight: bold;font-size: 17px;"></i>
-            </td>
-            <td class="text-center">
-                <i class="mdi mdi-@(entity.Enable ? "check" : "minus-circle")" style="color: @(entity.Enable ? "green" : "red");font-weight: bold;font-size: 17px;"></i>
-            </td>
-            @*<td class="text-right">@entity.Logins.ToString("n0")</td>*@
-            <td>@entity.LastLogin.ToFullString("")</td>
-            <td title="@entity.LastLoginAddress">@entity.LastLoginIP</td>
-            <td>@Html.ActionLink("日志", "Index", "Log", new { UserID = entity.ID }, null)</td>
-            @if (this.Has(PermissionFlags.Detail, PermissionFlags.Update, PermissionFlags.Delete))
-            {
+            <tr>
+                @if (set.EnableSelect)
+                {
+                    <td class="text-center">
+                        <div class="be-checkbox custom-control custom-checkbox">
+                            <input class="custom-control-input" type="checkbox" id="id_@entity.ID" name="keys" value="@entity.ID">
+                            <label class="custom-control-label" for="id_@entity.ID"></label>
+                        </div>
+                    </td>
+                }
+                <td class="text-center hidden-md hidden-sm hidden-xs">@entity.ID</td>
+                <td>@entity.Name</td>
+                <td>@entity.DisplayName</td>
+                <td class="text-center">@entity.Sex</td>
+                <td>@entity.Mail</td>
+                <td>@entity.Mobile</td>
+                @*<td><a href="Department?ID=@entity.DepartmentID">@entity.DepartmentName</a></td>*@
+                <td><a href="Role?ID=@entity.RoleID">@entity.RoleName</a></td>
                 <td class="text-center">
-                    @Html.Partial("_List_Data_Action", (Object)entity)
+                    <i class="mdi mdi-@(entity.Online ? "check" : "minus-circle")" style="color: @(entity.Online ? "green" : "red"); font-weight: bold;font-size: 17px;"></i>
                 </td>
-            }
-        </tr>
+                <td class="text-center">
+                    <i class="mdi mdi-@(entity.Enable ? "check" : "minus-circle")" style="color: @(entity.Enable ? "green" : "red");font-weight: bold;font-size: 17px;"></i>
+                </td>
+                @*<td class="text-right">@entity.Logins.ToString("n0")</td>*@
+                <td>@entity.LastLogin.ToFullString("")</td>
+                <td title="@entity.LastLoginAddress">@entity.LastLoginIP</td>
+                <td>@Html.ActionLink("日志", "Index", "Log", new { UserID = entity.ID }, null)</td>
+                @if (this.Has(PermissionFlags.Detail, PermissionFlags.Update, PermissionFlags.Delete))
+                {
+                    <td class="text-center">
+                        @Html.Partial("_List_Data_Action", (Object)entity)
+                    </td>
+                }
+            </tr>
         }
     </tbody>
 </table>

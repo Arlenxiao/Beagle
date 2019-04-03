@@ -1,18 +1,16 @@
 ﻿@{
-    /**/
-
     var formatStr = (Model is String) ? Model : "yyyy-MM-dd";
     var p = ViewBag.Page as Pager;
 }
 <div class="form-group">
-        <label for="dtStart" class="control-label mt-1  pr-1 pl-1">时间</label>
-        <div class="input-group date datetimepicker" data-min-view="2" data-date-format="yyyy-mm-dd">
-            <div class="input-group-append">
-                <button class="btn btn-secondary active"><i class="icon-th mdi mdi-calendar" style="font-size:14px;"></i></button>
-            </div>
-            <input class="form-control form-control-xs" size="14" type="text" value="@p["dtStart"]" name="dtStart" id="dtStart">
+    <label for="dtStart" class="control-label mt-1  pr-1 pl-1">时间</label>
+    <div class="input-group date datetimepicker" data-min-view="2" data-date-format="yyyy-mm-dd">
+        <div class="input-group-append">
+            <button class="btn btn-secondary active"><i class="icon-th mdi mdi-calendar" style="font-size:14px;"></i></button>
         </div>
+        <input class="form-control form-control-xs" size="14" type="text" value="@p["dtStart"]" name="dtStart" id="dtStart">
     </div>
+</div>
 <div class="form-group">
     <label for="dtStart" class="control-label mt-1 pr-1 pl-1"> 至 </label>
     <div class="input-group  date datetimepicker" data-min-view="2" data-date-format="yyyy-mm-dd">

@@ -1,0 +1,44 @@
+﻿@using NewLife;
+@using XCode;
+@using XCode.Configuration;
+@using NewLife.Cube.Beagle;
+@{
+    var pair = Model as Pair;
+    var entity = pair.First as IEntity;
+    var item = pair.Second as FieldItem;
+
+    var err = 0;
+    ModelState st = null;
+    if (ViewData.ModelState.TryGetValue(item.Name, out st) && st != null) { err = st.Errors.Count; }
+
+    var des = item.Description.TrimStart(item.DisplayName).TrimStart(",", ".", "，", "。");
+
+    var total = 12;
+    var label = 3;
+    var span = 4;
+    if (err == 0 && des.IsNullOrEmpty())
+    {
+        span = 0;
+    }
+    else if (item.Type == typeof(Boolean) || item.Type.IsEnum)
+    {
+        span += 1;
+    }
+    var input = total - label - span;
+}
+<label class="col-12 col-sm-3 col-form-label text-sm-right">@item.DisplayName</label>
+<div class="col-sm-6 col-lg-6">
+    @Html.ForEditorX(item, entity)
+
+</div>
+
+@if (err > 0)
+{
+    @*<ul class="parsley-errors-list filled"><li class="parsley-required"> @Html.ValidationMessage(item.Name)</li></ul>*@
+}
+else if (!des.IsNullOrEmpty())
+{
+    <div class="col-sm-3 col-lg-3">
+        @Html.ForDescriptionX(item)
+    </div>
+}

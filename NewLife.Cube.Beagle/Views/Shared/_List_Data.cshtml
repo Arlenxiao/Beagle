@@ -18,7 +18,12 @@
         <tr>
             @if (set.EnableSelect)
             {
-                <th class="text-center" style="width:10px;"><input type="checkbox" id="chkAll" title="全选" /></th>
+                <th class="text-center" style="width:10px;">
+                    <div class="be-checkbox custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" id="chkAll">
+                        <label class="custom-control-label" for="chkAll"></label>
+                    </div>
+                </th>
             }
             @foreach (var item in fields)
             {
@@ -45,7 +50,12 @@
             <tr>
                 @if (set.EnableSelect)
                 {
-                    <td class="text-center"><input type="checkbox" name="keys" value="@entity[fk.Name]" /></td>
+                    <td class="text-center">
+                        <div class="be-checkbox custom-control custom-checkbox">
+                            <input class="custom-control-input" type="checkbox" id="id_@entity[fk.Name]" name="keys" value="@entity[fk.Name]">
+                            <label class="custom-control-label" for="id_@entity[fk.Name]"></label>
+                        </div>
+                    </td>
                 }
                 @foreach (var item in fields)
                 {

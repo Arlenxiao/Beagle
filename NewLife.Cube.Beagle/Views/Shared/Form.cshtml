@@ -10,7 +10,7 @@
     var rv = entity.GetRouteKey();
 }
 
-<div class="form-horizontal">
+<div class="card-body">
     @Html.Partial("_Form_Header", entity)
     @using (Html.BeginForm((isNew ? "Add" : "Edit"), null, rv))
     {

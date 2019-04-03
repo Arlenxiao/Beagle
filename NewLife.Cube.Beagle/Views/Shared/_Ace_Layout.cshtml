@@ -12,6 +12,7 @@
     <link href="~/Template/lib/material-design-icons/css/material-design-iconic-font.css" rel="stylesheet" />
     <link href="~/Template/lib/datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet" />
     <link href="~/Template/lib/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+    <link href="~/Template/lib/select2/css/select2.min.css" rel="stylesheet" />
     <link href="~/Template/css/app.css" rel="stylesheet" />
     @RenderSection("css", required: false)
 
@@ -29,19 +30,21 @@
             @Html.Raw(DbRunTimeModule.GetInfo())
         </div>
     }
-   
+
     <script src="~/Template/lib/datetimepicker/js/bootstrap-datetimepicker.js"></script>
     <script src="~/Template/lib/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
     <script src="~/Template/js/app.js"></script>
     <script src="~/Template/lib/prettify/prettify.js"></script>
     <script src="~/Template/lib/sweetalert2/sweetalert2.all.min.js"></script>
-    
+    <script src="~/Template/lib/select2/js/select2.full.min.js"></script>
+    <script src="~/Template/lib/parsley/parsley.min.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
             //-initialize the javascript
             App.init();
 
+            //$('form').parsley();
             //Runs prettify
             prettyPrint();
             $(".datetimepicker").datetimepicker({
@@ -52,6 +55,15 @@
                     leftIcon: 'mdi mdi-chevron-left'
                 }
             });
+
+            //Select2
+            $(".select2").select2({
+                width: '50%',
+                placeholder: 'Select a state'
+            });
+
+            //Select2 tags
+            $(".tags").select2({ tags: true, width: '100%' });
 
             //根据data-action的值确定操作类型 action为请求后端执行业务操作，url为直接跳转指定url地址
             //按钮请求action
@@ -156,7 +168,7 @@
                                 window.location.href = rs.url;
                             }
                         }, 2000);
-                        
+
                     }
                 }
             });
@@ -177,7 +189,7 @@
                 title: title,
                 showConfirmButton: false,
                 timer: time,
-            });  
+            });
         }
 
     </script>
